@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback — Justine Laguerta Portfolio</title>
+  <meta name="description" content="Send your feedback, suggestions, or comments directly to Justine Laguerta.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/components.js" defer></script>
+  <script src="js/feedback.js" defer></script>
+</head>
+<body>
+  <main>
+    <div class="page-header">
+      <h1>Feedback & Contact</h1>
+      <p>I'd love to hear your thoughts, suggestions, or potential collaboration inquiries!</p>
+    </div>
+
+    <div class="feedback-container">
+      <form id="feedback-form" class="feedback-form" novalidate>
+        <!-- Rating Stars -->
+        <div class="form-group">
+          <label class="form-label">How would you rate your experience?</label>
+          <div class="star-rating" id="star-rating">
+            <button type="button" class="star-btn" data-value="1" aria-label="1 star">&#9733;</button>
+            <button type="button" class="star-btn" data-value="2" aria-label="2 stars">&#9733;</button>
+            <button type="button" class="star-btn" data-value="3" aria-label="3 stars">&#9733;</button>
+            <button type="button" class="star-btn" data-value="4" aria-label="4 stars">&#9733;</button>
+            <button type="button" class="star-btn" data-value="5" aria-label="5 stars">&#9733;</button>
+          </div>
+          <input type="hidden" id="rating-value" name="rating" value="0">
+          <span class="error-msg" id="rating-error">Please select a rating score.</span>
+        </div>
+
+        <!-- Name Field -->
+        <div class="form-group">
+          <label for="fb-name" class="form-label">Your Name</label>
+          <input type="text" id="fb-name" name="name" class="form-input" placeholder="e.g. Maria Santos" required>
+          <span class="error-msg" id="name-error">Please enter your name (at least 2 characters).</span>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="fb-email" class="form-label">Email Address</label>
+          <input type="email" id="fb-email" name="email" class="form-input" placeholder="e.g. maria@example.com" required>
+          <span class="error-msg" id="email-error">Please enter a valid email address.</span>
+        </div>
+
+        <!-- Category Select -->
+        <div class="form-group">
+          <label for="fb-category" class="form-label">Feedback Category</label>
+          <select id="fb-category" name="category" class="form-select">
+            <option value="general">General Impression</option>
+            <option value="ui-ux">UI / UX & Design</option>
+            <option value="bug">Bug Report / Issue</option>
+            <option value="opportunity">Project / Job Opportunity</option>
+          </select>
+        </div>
+
+        <!-- Message Field with Character Counter -->
+        <div class="form-group">
+          <div class="label-with-counter">
+            <label for="fb-message" class="form-label">Your Message</label>
+            <span class="char-counter" id="char-counter">0 / 500</span>
+          </div>
+          <textarea id="fb-message" name="message" class="form-textarea" rows="4" maxlength="500" placeholder="Write your feedback or message here..." required></textarea>
+          <span class="error-msg" id="message-error">Please enter a message (at least 10 characters).</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">
+          <span>Send Feedback</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+
+      <!-- Success Notification / Card -->
+      <div id="feedback-success" class="feedback-success" style="display: none;">
+        <div class="success-icon">&#10004;</div>
+        <h2>Thank You for Your Feedback!</h2>
+        <p>Your response has been saved locally and logged to the system.</p>
+        <button id="reset-form-btn" class="btn btn-ghost" style="margin-top: 1.5rem;">Submit Another Response</button>
+      </div>
+
+      <!-- Live Recent Submissions List -->
+      <div class="recent-feedback-section">
+        <h3>Recent Submissions (Saved Locally)</h3>
+        <div id="feedback-list" class="feedback-list">
+          <p class="empty-msg">No feedback submitted yet. Be the first!</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
